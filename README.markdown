@@ -26,3 +26,9 @@ In the future, I'd like to:
 	* printing/emailing graphs (use [the fancy stuff github uses](https://github.com/mbostock/d3))
 * test:
 	* on phones/tablets/common browsers
+
+
+## Acknowledgments
+Thanks to:
+* [Backbone.js and their awesome documentation](http://backbonejs.org/)
+* [Github.com (source code hosting)](https://github.com/)
