@@ -9,7 +9,7 @@ coffee --join js/app.js --compile $(find coffee/ -type f)
 
 # minify javascript files if they exist (and 'nomin' isn't passed in)
 if [ -n "$minify" -a $(ls -1 js/ | wc -l) -gt 0 ]; then
-	uglifyjs --output js/ --overwrite js/*.js
+	uglifyjs --no-copyright --output js/ --overwrite js/*.js
 fi
 
 echo build successful!
