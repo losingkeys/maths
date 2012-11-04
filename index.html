@@ -27,14 +27,14 @@
 	<script id=problem-template-0 type=text/html>
 		<div class=problem>
 			<form method=post>
-				<%= operand0 %> <%= operator %> <%= operand1 %> = <input name=answer>
+				<%= operand0 %> <%= operator %> <%= operand1 %> = <input name=answer autofocus>
 			</form>
 		</div>
 	</script>
 	<script id=problem-template-1 type=text/html>
 		<div class=problem>
 			<form method=post>
-				<input name=answer> = <%= operand0 %> <%= operator %> <%= operand1 %>
+				<input name=answer autofocus> = <%= operand0 %> <%= operator %> <%= operand1 %>
 			</form>
 		</div>
 	</script>
@@ -44,7 +44,7 @@
 				<%= operand0 %>
 				<%= operator %> <%= operand1 %>
 				<hr>
-				<input name=answer>
+				<input name=answer autofocus>
 			</form>
 		</div>
 	</script>
