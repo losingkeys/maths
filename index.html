@@ -22,6 +22,32 @@
 			</li>
 		</ul>
 	</nav>
+	<div class=problem>
+	</div>
+	<script id=problem-template-0 type=text/html>
+		<div class=problem>
+			<form method=post>
+				<%= operand0 %> <%= operator %> <%= operand1 %> = <input name=answer>
+			</form>
+		</div>
+	</script>
+	<script id=problem-template-1 type=text/html>
+		<div class=problem>
+			<form method=post>
+				<input name=answer> = <%= operand0 %> <%= operator %> <%= operand1 %>
+			</form>
+		</div>
+	</script>
+	<script id=problem-template-2 type=text/html>
+		<div class=problem>
+			<form method=post>
+				<%= operand0 %>
+				<%= operator %> <%= operand1 %>
+				<hr>
+				<input name=answer>
+			</form>
+		</div>
+	</script>
 	<script src=https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js></script>
 	<script src=lib/underscore/underscore-min.js></script>
 	<script src=lib/backbone/backbone-min.js></script>
