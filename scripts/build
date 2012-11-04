@@ -5,7 +5,7 @@ minify='yes'
 if [ "$1" = 'nomin' ]; then minify=''; fi
 
 # compile coffeescript files into js/app.js
-coffee --join js/app.js --compile coffee/*.coffee
+coffee --join js/app.js --compile $(find coffee/ -type f)
 
 # minify javascript files if they exist (and 'nomin' isn't passed in)
 if [ -n "$minify" -a $(ls -1 js/ | wc -l) -gt 0 ]; then
