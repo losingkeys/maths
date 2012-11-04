@@ -5,7 +5,7 @@ ProblemView = Backbone.View.extend
 
 	recentProblem: {}
 
-	initilize: (operation='addition', group='0') ->
+	initilize: (@operation='addition', @group='0') ->
 		otherOperand = Math.floor Math.random()*10
 
 		# the result cannot be negative, order matters (put the larger number first)
@@ -45,10 +45,10 @@ ProblemView = Backbone.View.extend
 		correctAnswer   = 0
 		submittedAnswer = @$el.find('input[name = answer]').val()
 
-		if @recentProblem.operator is '+'
+		if @operation is 'addition'
 			correctAnswer = Number(@recentProblem.operand0) + Number(@recentProblem.operand1)
 
-		if @recentProblem.operator is '-'
+		if @operation is 'subtraction'
 			correctAnswer = Number(@recentProblem.operand0) - Number(@recentProblem.operand1)
 
 		if correctAnswer is Number(submittedAnswer)
