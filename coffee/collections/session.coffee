@@ -18,7 +18,7 @@ Session = Backbone.Collection.extend
 		group           = lastQuestionSet.get 'group'
 		operation       = lastQuestionSet.get 'operation'
 
-		if do @setsPerOperation is group
+		if @setsPerOperation is group
 			if operation is @allOperations[-1..][0] # on the last operation?
 				#FIXME: add a bonus round w/all operations!
 				app.router.navigate 'finished'
