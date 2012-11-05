@@ -34,8 +34,8 @@ QuestionSet = Backbone.Model.extend
 				operand1: @get('group')
 				operator: '+'
 
-	checkIfFinished: ->
-		@asked.length is @questionsPerSet
+	finishedWithSet: ->
+		_.keys(@asked).length is @questionsPerSet
 
 	answerQuestion: (submittedAnswer) ->
 		correctAnswer   = 0
@@ -53,6 +53,5 @@ QuestionSet = Backbone.Model.extend
 			submittedAnswer: submittedAnswer
 
 		correct
-
 
 app.QuestionSet = QuestionSet
