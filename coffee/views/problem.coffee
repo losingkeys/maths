@@ -13,7 +13,7 @@ ProblemView = Backbone.View.extend
 		@render app.session.getLastQuestionSet().getNewQuestion()
 
 	render: (data={}) ->
-		newProblem = $("#problem-template-#{_.random 0, 3}").html()
+		newProblem = $("#problem-template-#{_.random 0, 2}").html()
 
 		$('#problemContainer').html _.template newProblem, data
 
