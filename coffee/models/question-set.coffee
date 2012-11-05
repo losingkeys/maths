@@ -38,7 +38,7 @@ QuestionSet = Backbone.Model.extend
 		_.keys(@asked).length is @questionsPerSet
 
 	answerQuestion: (submittedAnswer) ->
-		correctAnswer   = 0
+		correctAnswer = null
 
 		if @operation is 'addition'
 			correctAnswer = Number(@currentOperand) + Number(@get('group'))
