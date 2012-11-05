@@ -25,8 +25,7 @@ ProblemView = Backbone.View.extend
 
 		correct = app.session.getLastQuestionSet().answerQuestion @$el.find('input[name = answer]').val()
 
-		if correct
-			alert 'right!' # display 'correct', and add a button to switch to the next question here
+		# FIXME display 'correct', and add a button to switch to the next question here
 
 		do @displayNextQuestion
 
