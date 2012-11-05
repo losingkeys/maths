@@ -31,7 +31,7 @@ ProblemView = Backbone.View.extend
 		if app.session.finishedWithOperation()
 			app.session.nextRound()
 		else if lastQuestionSet.finishedWithSet()
-			app.router.navigate "practice/#{lastQuestionSet.get 'operation'}/#{1 + Number(lastQuestionSet.get('group'))}"
+			app.router.navigate "practice/#{lastQuestionSet.get 'operation'}/#{1 + Number(lastQuestionSet.get('group'))}", trigger: true
 
 		do @displayNextQuestion
 

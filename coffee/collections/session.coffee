@@ -24,9 +24,9 @@ Session = Backbone.Collection.extend
 		if @setsPerOperation is group
 			if operation is @allOperations[-1..][0] # on the last operation?
 				#FIXME: add a bonus round w/all operations!
-				app.router.navigate 'finished'
+				app.router.navigate 'finished', trigger: true
 			else
 				nextOperation = @allOperations[1 + @allOperations.indexOf operation]
-				app.router.navigate "practice/#{nextOperation}/0"
+				app.router.navigate "practice/#{nextOperation}/0", trigger: true
 
 app.Session = Session
