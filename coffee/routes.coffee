@@ -5,7 +5,8 @@ MainRouter = Backbone.Router.extend
 		'':                           'root'
 		'config':                     'config'
 		'reset':                      'reset'
-		'practice/':                  'math'
+		'finished':                   'finished'
+		'practice':                   'math'
 		'practice/:operation':        'math'
 		'practice/:operation/:group': 'math'
 
@@ -13,12 +14,17 @@ MainRouter = Backbone.Router.extend
 		console.log 'root route'
 
 	math: (operation='addition', group='0') ->
-		(new ProblemView()).initilize operation, group
+		app.session or= new app.Session()
+		app.session.push new app.QuestionSet operation: operation, group: group
+		do (new app.ProblemView()).initilize
 
 	reset: ->
 		console.log 'resetting'
 
 	config: ->
 		console.log 'configuring'
+
+	finished: ->
+		alert 'finished'
 
 app.router = new MainRouter()

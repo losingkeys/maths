@@ -3,33 +3,14 @@ window.app or= {}
 ProblemView = Backbone.View.extend
 	el: '#problemContainer'
 
-	recentProblem: {}
-
-	initilize: (@operation='addition', @group='0') ->
-		otherOperand = Math.floor Math.random()*10
-
-		# the result cannot be negative, order matters (put the larger number first)
-		if operation is 'subtraction'
-			@recentProblem =
-				operand0: Math.max group, otherOperand
-				operand1: Math.min group, otherOperand
-				operator: '-'
-		else # order doesn't matter, this is addition
-			if (Math.floor(Math.random()*10))%2
-				@recentProblem =
-					operand0: group
-					operand1: otherOperand
-					operator: '+'
-			else
-				@recentProblem =
-					operand0: otherOperand
-					operand1: group
-					operator: '+'
-
-		@render @recentProblem
+	initilize: ->
+		do @displayNextQuestion
 
 	events:
 		'submit form': 'grade'
+
+	displayNextQuestion: ->
+		@render app.session.getLastQuestionSet().getNewQuestion()
 
 	render: (data={}) ->
 		templateNumber = Math.floor(Math.random()*3)
@@ -42,16 +23,11 @@ ProblemView = Backbone.View.extend
 	grade: (event) ->
 		do event.preventDefault
 
-		correctAnswer   = 0
-		submittedAnswer = @$el.find('input[name = answer]').val()
+		correct = app.session.getLastQuestionSet().answerQuestion @$el.find('input[name = answer]').val()
 
-		if @operation is 'addition'
-			correctAnswer = Number(@recentProblem.operand0) + Number(@recentProblem.operand1)
+		if correct
+			alert 'right!' # display 'correct', and add a button to switch to the next question here
 
-		if @operation is 'subtraction'
-			correctAnswer = Number(@recentProblem.operand0) - Number(@recentProblem.operand1)
-
-		if correctAnswer is Number(submittedAnswer)
-			alert 'right!'
+		do @displayNextQuestion
 
 window.app.ProblemView = ProblemView
