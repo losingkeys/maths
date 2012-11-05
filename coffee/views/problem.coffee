@@ -24,13 +24,15 @@ ProblemView = Backbone.View.extend
 
 		lastQuestionSet = app.session.getLastQuestionSet()
 
-		correct = lastQuestionSet.answerQuestion @$el.find('input[name = answer]').val()
+		correct = lastQuestionSet.answerQuestion @$el.find('input[name=answer]').val()
 
 		# FIXME display 'correct', and add a button to switch to the next question here
 
 		if app.session.finishedWithOperation()
+			do @undelegateEvents # disable this view before navigating to a new one
 			app.session.nextRound()
 		else if lastQuestionSet.finishedWithSet()
+			do @undelegateEvents # disable this view before navigating to a new one
 			app.router.navigate "practice/#{lastQuestionSet.get 'operation'}/#{1 + Number(lastQuestionSet.get('group'))}", trigger: true
 
 		do @displayNextQuestion
