@@ -13,8 +13,7 @@ ProblemView = Backbone.View.extend
 		@render app.session.getLastQuestionSet().getNewQuestion()
 
 	render: (data={}) ->
-		templateNumber = Math.floor(Math.random()*3)
-		newProblem     = $("#problem-template-#{templateNumber}").html()
+		newProblem = $("#problem-template-#{_.random 0, 3}").html()
 
 		$('#problemContainer').html _.template newProblem, data
 
@@ -23,9 +22,16 @@ ProblemView = Backbone.View.extend
 	grade: (event) ->
 		do event.preventDefault
 
-		correct = app.session.getLastQuestionSet().answerQuestion @$el.find('input[name = answer]').val()
+		lastQuestionSet = app.session.getLastQuestionSet()
+
+		correct = lastQuestionSet.answerQuestion @$el.find('input[name = answer]').val()
 
 		# FIXME display 'correct', and add a button to switch to the next question here
+
+		if app.session.finishedWithOperation()
+			app.session.nextRound()
+		else if lastQuestionSet.finishedWithSet()
+			app.router.navigate "practice/#{lastQuestionSet.get 'operation'}/#{1 + Number(lastQuestionSet.get('group'))}"
 
 		do @displayNextQuestion
 

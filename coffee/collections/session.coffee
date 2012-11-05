@@ -13,6 +13,9 @@ Session = Backbone.Collection.extend
 	getLastQuestionSet: ->
 		@models[-1..][0]
 
+	finishedWithOperation: ->
+		@models.length is @setsPerOperation
+
 	nextRound: ->
 		lastQuestionSet = do @getLastQuestionSet
 		group           = lastQuestionSet.get 'group'
@@ -25,7 +28,5 @@ Session = Backbone.Collection.extend
 			else
 				nextOperation = @allOperations[1 + @allOperations.indexOf operation]
 				app.router.navigate "practice/#{nextOperation}/0"
-		else
-			app.router.navigate "practice/#{operation}/#{++group}"
 
 app.Session = Session
