@@ -4,6 +4,14 @@
   border-bottom-color: black
   border-bottom-style: solid
 
+%smallinput
+  @extend %borderbottom
+  width: 2em
+
+input[name=answer]
+  @extend %smallinput
+  text-align: center
+
 .problem
   font-weight: bold
 
@@ -11,12 +19,10 @@
     @extend %borderbottom
 
   input
-    width: 2em
-    @extend %borderbottom
     border-bottom-style: dotted
 
 .message
-  .correct, .incorrect
+  .correct, .incorrect, input
     font-weight: bold
 
   .correct
