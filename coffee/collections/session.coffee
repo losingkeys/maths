@@ -8,13 +8,20 @@ Session = Backbone.Collection.extend
 		'subtraction'
 	]
 
-	setsPerOperation: 11
+	setsPerOperation: 10
 
 	getLastQuestionSet: ->
 		@models[-1..][0]
 
 	finishedWithOperation: ->
-		Number(@setsPerOperation) is Number(@getLastQuestionSet().get 'group')
+		lastQuestionSet = @getLastQuestionSet()
+
+		# only return true if we're just finishing w/the last set
+		# so you can run through the full final set, but nothing extra
+		if Number(@setsPerOperation) is Number(lastQuestionSet.get 'group')
+			return lastQuestionSet.finishedWithSet()
+
+		false
 
 	nextRound: ->
 		lastQuestionSet = do @getLastQuestionSet
