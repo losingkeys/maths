@@ -8,25 +8,23 @@ Session = Backbone.Collection.extend
 		'subtraction'
 	]
 
-	setsPerOperation: 10
+	setsPerOperation: 11
 
 	getLastQuestionSet: ->
 		@models[-1..][0]
 
 	finishedWithOperation: ->
-		@getLastQuestionSet().get('group') is @setsPerOperation
+		Number(@setsPerOperation) is Number(@getLastQuestionSet().get 'group')
 
 	nextRound: ->
 		lastQuestionSet = do @getLastQuestionSet
-		group           = lastQuestionSet.get 'group'
 		operation       = lastQuestionSet.get 'operation'
 
-		if @setsPerOperation is group
-			if operation is @allOperations[-1..][0] # on the last operation?
-				#FIXME: add a bonus round w/all operations!
-				app.router.navigate 'finished', trigger: true
-			else
-				nextOperation = @allOperations[1 + @allOperations.indexOf operation]
-				app.router.navigate "practice/#{nextOperation}/0", trigger: true
+		if operation is @allOperations[-1..][0] # on the last operation?
+			#FIXME: add a bonus round w/all operations!
+			app.router.navigate 'finished', trigger: true
+		else
+			nextOperation = @allOperations[1 + @allOperations.indexOf operation]
+			app.router.navigate "practice/#{nextOperation}/0", trigger: true
 
 app.Session = Session
