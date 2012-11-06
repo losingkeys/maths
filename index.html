@@ -27,22 +27,22 @@
 	<script id=problem-template-0 type=text/html>
 		<div class=problem>
 			<form method=post>
-				<%= operand0 %> <%= operator %> <%= operand1 %> = <input name=answer autofocus autocomplete=off>
+				<%- operand0 %> <%- operator %> <%- operand1 %> = <input name=answer autofocus autocomplete=off>
 			</form>
 		</div>
 	</script>
 	<script id=problem-template-1 type=text/html>
 		<div class=problem>
 			<form method=post>
-				<input name=answer autofocus autocomplete=off> = <%= operand0 %> <%= operator %> <%= operand1 %>
+				<input name=answer autofocus autocomplete=off> = <%- operand0 %> <%- operator %> <%- operand1 %>
 			</form>
 		</div>
 	</script>
 	<script id=problem-template-2 type=text/html>
 		<div class=problem>
 			<form method=post>
-				<%= operand0 %>
-				<%= operator %> <%= operand1 %>
+				<%- operand0 %>
+				<%- operator %> <%- operand1 %>
 				<hr>
 				<input name=answer autofocus autocomplete=off>
 			</form>
