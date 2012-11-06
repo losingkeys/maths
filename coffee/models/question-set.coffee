@@ -4,21 +4,22 @@ QuestionSet = Backbone.Model.extend
 	defaults:
 		operation: 'addition'
 		group:     '0'
-
-	currentOperand: null
+		currentOperand: null
+		asked: {}
 
 	questionsPerSet: 11
 
-	asked: {}
+	initialize: ->
+		@set 'asked', {}
 
 	getNewQuestion: ->
 		# get an operand we haven't used yet this round
 		while true
 			operand = _.random 0, @questionsPerSet-1
-			unless _.contains _.keys(@asked), "#{operand}"
+			unless _.contains _.keys(@get('asked')), "#{operand}"
 				break
 
-		@currentOperand = operand
+		@set 'currentOperand', operand
 
 		# the result cannot be negative, order matters (put the larger number first)
 		if @operation is 'subtraction'
@@ -36,20 +37,20 @@ QuestionSet = Backbone.Model.extend
 				operator: '+'
 
 	finishedWithSet: ->
-		_.keys(@asked).length is @questionsPerSet
+		_.keys(@get('asked')).length is @questionsPerSet
 
 	answerQuestion: (submittedAnswer) ->
 		correctAnswer = null
 
 		if @operation is 'addition'
-			correctAnswer = Number(@currentOperand) + Number(@get('group'))
+			correctAnswer = Number(@get('currentOperand')) + Number(@get('group'))
 
 		if @operation is 'subtraction'
-			correctAnswer = Math.abs Number(@currentOperand) - Number(@get('group'))
+			correctAnswer = Math.abs Number(@get('currentOperand')) - Number(@get('group'))
 
 		correct = correctAnswer is Number(submittedAnswer)
 
-		@asked["#{@currentOperand}"] =
+		@get('asked')["#{@get('currentOperand')}"] =
 			correct:         correct
 			submittedAnswer: submittedAnswer
 
