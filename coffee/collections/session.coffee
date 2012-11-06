@@ -14,7 +14,7 @@ Session = Backbone.Collection.extend
 		@models[-1..][0]
 
 	finishedWithOperation: ->
-		@models.length is @setsPerOperation
+		@getLastQuestionSet().get('group') is @setsPerOperation
 
 	nextRound: ->
 		lastQuestionSet = do @getLastQuestionSet
