@@ -3,18 +3,15 @@ window.app or= {}
 GlobalView = Backbone.View.extend
 	el: 'body'
 
-	initilize: ->
-		console.log 'init global view'
-
 	events:
 		'click #config': 'renderConfig'
 		'click #reset': 'nav'
 		'click nav': 'nav'
 
 	renderConfig: ->
-		console.log 'rendering config page'
+		# pass
 
 	nav: ->
-		console.log 'navigating'
+		# pass
 
 window.app.GlobalView = GlobalView
