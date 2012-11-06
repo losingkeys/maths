@@ -1,15 +1,34 @@
 #!/bin/sh
 
-# should compiled javascript/css be minified
+# NOTE: the following tools are assumed to be installed on your system:
+# `coffee`   (install with `npm install -g coffee-script`)
+# `sass`     (install with `gem install sass`)
+# `uglifyjs` (install with `npm install -g uglify-js`)
+# `cssmin` (install with `npm install -g uglify-js`)
+
+# should compiled javascript/css be minified?
 minify='yes'
 if [ "$1" = 'nomin' ]; then minify=''; fi
 
 # compile coffeescript files into js/app.js
 coffee --join js/app.js --compile $(find coffee/ -type f)
 
+# compile sass files to css files (from sass/ to css/)
+sass --force --update sass:css
+
 # minify javascript files if they exist (and 'nomin' isn't passed in)
-if [ -n "$minify" -a $(ls -1 js/ | wc -l) -gt 0 ]; then
-	uglifyjs --no-copyright --output js/ --overwrite js/*.js
+if [ -n "$minify" ]; then
+
+	if [ $(ls -1 js/ | wc -l) -gt 0 ]; then # javascript files to minify?
+		uglifyjs --no-copyright --output js/ --overwrite js/*.js
+	fi
+
+	if [ $(ls -1 css/ | wc -l) -gt 0 ]; then # css files to minify?
+		for cssFile in css/*.css; do
+			cssmin $cssFile > "${cssFile%.css}-min.css"
+		done
+	fi
+
 fi
 
 echo build successful!
