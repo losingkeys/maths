@@ -10,6 +10,9 @@
 minify='yes'
 if [ "$1" = 'nomin' ]; then minify=''; fi
 
+# remove generated files
+rm css/*.css js/*.js
+
 # compile coffeescript files into js/app.js
 coffee --join js/app.js --compile $(find coffee/ -type f)
 
