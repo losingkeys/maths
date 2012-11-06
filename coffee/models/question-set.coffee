@@ -7,14 +7,14 @@ QuestionSet = Backbone.Model.extend
 
 	currentOperand: null
 
-	questionsPerSet: 10
+	questionsPerSet: 11
 
 	asked: {}
 
 	getNewQuestion: ->
 		# get an operand we haven't used yet this round
 		while true
-			operand = _.random 0, (@questionsPerSet)
+			operand = _.random 0, @questionsPerSet-1
 			unless _.contains _.keys(@asked), "#{operand}"
 				break
 
