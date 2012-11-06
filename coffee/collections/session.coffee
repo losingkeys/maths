@@ -1,7 +1,7 @@
 window.app or= {}
 
 Session = Backbone.Collection.extend
-	# localStorage: new Backbone.LocalStorage 'Session'
+	localStorage: new Backbone.LocalStorage 'Session'
 
 	operations: [
 		'addition'
