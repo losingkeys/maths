@@ -27,13 +27,13 @@
 	</div>
 	<script id=correct type=text/html>
 		<div class=message>
-			Correct!
+			<span class=correct>Correct!</span>
 		</div>
 		<button class=nextQuestion>Next Question</button>
 	</script>
 	<script id=incorrect type=text/html>
 		<div class=message>
-			Incorrect, the right answer is: <input name=answer readonly value="<%- correctAnswer %>">
+			<span class=incorrect>Incorrect</span>, the right answer is: <input name=answer readonly value="<%- correctAnswer %>">
 		</div>
 		<button class=nextQuestion>Next Question</button>
 	</script>

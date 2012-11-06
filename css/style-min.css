@@ -1,1 +1,1 @@
-.problem hr,.problem input{border-style:none;border-bottom-width:2px;border-bottom-color:black;border-bottom-style:solid}.problem{font-weight:bold}.problem input{width:2em;border-bottom-style:dotted}
+.problem hr,.problem input{border-style:none;border-bottom-width:2px;border-bottom-color:black;border-bottom-style:solid}.problem{font-weight:bold}.problem input{width:2em;border-bottom-style:dotted}.message .correct,.message .incorrect{font-weight:bold}.message .correct{color:green}.message .incorrect{color:red}

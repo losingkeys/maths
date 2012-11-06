@@ -9,3 +9,10 @@
   .problem input {
     width: 2em;
     border-bottom-style: dotted; }
+
+.message .correct, .message .incorrect {
+  font-weight: bold; }
+.message .correct {
+  color: green; }
+.message .incorrect {
+  color: red; }
