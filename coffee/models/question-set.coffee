@@ -22,7 +22,7 @@ QuestionSet = Backbone.Model.extend
 		@set 'currentOperand', operand
 
 		# the result cannot be negative, order matters (put the larger number first)
-		if @operation is 'subtraction'
+		if @get('operation') is 'subtraction'
 			operand0: Math.max @get('group'), operand
 			operand1: Math.min @get('group'), operand
 			operator: '-'
