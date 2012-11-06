@@ -24,9 +24,16 @@ ProblemView = Backbone.View.extend
 
 		lastQuestionSet = app.session.getLastQuestionSet()
 
-		correct = lastQuestionSet.answerQuestion @$el.find('input[name=answer]').val()
+		{correct, correctAnswer} = lastQuestionSet.answerQuestion @$el.find('input[name=answer]').val()
 
-		# FIXME display 'correct', and add a button to switch to the next question here
+		nextQuestionForm = null
+		if correct
+			nextQuestionForm = $ _.template $('#correct').html(), {}
+		else
+			nextQuestionForm = $ _.template $('#incorrect').html(), correctAnswer: correctAnswer
+
+		$('#problemContainer').html nextQuestionForm
+		$('.nextQuestion').on 'click', => do @displayNextQuestion
 
 		if app.session.finishedWithOperation()
 			do @undelegateEvents # disable this view before navigating to a new one
@@ -35,6 +42,5 @@ ProblemView = Backbone.View.extend
 			do @undelegateEvents # disable this view before navigating to a new one
 			app.router.navigate "practice/#{lastQuestionSet.get 'operation'}/#{1 + Number(lastQuestionSet.get('group'))}", trigger: true
 
-		do @displayNextQuestion
 
 window.app.ProblemView = ProblemView

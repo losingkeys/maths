@@ -42,18 +42,22 @@ QuestionSet = Backbone.Model.extend
 	answerQuestion: (submittedAnswer) ->
 		correctAnswer = null
 
-		if @operation is 'addition'
+		if @get('operation') is 'addition'
 			correctAnswer = Number(@get('currentOperand')) + Number(@get('group'))
 
-		if @operation is 'subtraction'
+		if @get('operation') is 'subtraction'
 			correctAnswer = Math.abs Number(@get('currentOperand')) - Number(@get('group'))
 
-		correct = correctAnswer is Number(submittedAnswer)
+		# submitting nothing is different than submitting '0'
+		correct = if submittedAnswer?
+			correctAnswer is Number(submittedAnswer)
+		else
+			false
 
 		@get('asked')["#{@get('currentOperand')}"] =
 			correct:         correct
 			submittedAnswer: submittedAnswer
 
-		correct
+		correct: correct, correctAnswer: correctAnswer
 
 app.QuestionSet = QuestionSet
