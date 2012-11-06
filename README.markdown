@@ -4,7 +4,12 @@ That's why I made this app, so you can do math from everywhere!
 
 
 ## Installing
-Right now this app just runs on the client side, so you could just download it and point your browser to `math.html` or `index.html`.
+Right now this app just runs on the client side, so you could just download it and point your browser to `index.html`.
+To download, just run:
+
+	git clone --recursive https://github.com/joshuarh/maths
+
+in your terminal.
 
 
 ## How it works
@@ -16,6 +21,8 @@ Right now you can:
 
 ## TODO/Plans
 In the future, I'd like to:
+* Style it!  It's still very much unstyled
+* Ensure everything works as expected (grading, next ?, etc)
 * Get this working on the server side so classrooms can:
 	* track students' progress
 	* save their sessions safely, without leaking any students' data
