@@ -49,7 +49,7 @@ QuestionSet = Backbone.Model.extend
 			correctAnswer = Math.abs Number(@get('currentOperand')) - Number(@get('group'))
 
 		# submitting nothing is different than submitting '0'
-		correct = if submittedAnswer?
+		correct = if submittedAnswer?.trim().length
 			correctAnswer is Number(submittedAnswer)
 		else
 			false
