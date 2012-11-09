@@ -4,6 +4,9 @@ ProblemView = Backbone.View.extend
 	el: '#problemContainer'
 
 	initilize: ->
+		do app.lastProblemView?.undelegateEvents
+		app.lastProblemView = @
+
 		do @displayNextQuestion
 
 	events:
@@ -36,10 +39,8 @@ ProblemView = Backbone.View.extend
 		$('.nextQuestion').on 'click', => do @displayNextQuestion
 
 		if app.session.finishedWithOperation()
-			do @undelegateEvents # disable this view before navigating to a new one
 			app.session.nextRound()
 		else if lastQuestionSet.finishedWithSet()
-			do @undelegateEvents # disable this view before navigating to a new one
 			app.router.navigate "practice/#{lastQuestionSet.get 'operation'}/#{1 + Number(lastQuestionSet.get('group'))}", trigger: true
 
 
