@@ -4,9 +4,31 @@
   border-bottom-color: black
   border-bottom-style: solid
 
-%smallinput
-  @extend %borderbottom
-  width: 2em
+%center_inner
+  display: table-cell
+  text-align: center
+  vertical-align: middle
+  font-weight: bold
+
+@media screen and (max-width: 1280px)
+  %borderbottom
+    border-bottom-width: 10px
+
+  .problem
+    font-size: 4em
+
+  .message
+    font-size: 2em
+
+@media screen and (max-width: 480px)
+  %borderbottom
+    border-bottom-width: 5px
+
+  .problem
+    font-size: 3em
+
+  .message
+    font-size: 1.5em
 
 body, html, #problemContainer
   height: 100%
@@ -37,21 +59,27 @@ nav
   margin: 0 auto
 
 .problem
-  display: table-cell
-  vertical-align: middle
-  font-weight: bold
+  @extend %center_inner
 
   hr
     @extend %borderbottom
+    margin: 0
 
   input
     border-bottom-style: dotted
 
 input[name=answer]
-  @extend %smallinput
+  width: 2em
   text-align: center
+  font-size: 1em
+  border: none
+
+.nextQuestion
+  @extend %center_inner
 
 .message
+  @extend %center_inner
+
   .correct, .incorrect, input
     font-weight: bold
 

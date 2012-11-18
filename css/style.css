@@ -1,12 +1,33 @@
-input[name=answer], .problem hr {
+.problem hr {
   border-style: none;
   border-bottom-width: 2px;
   border-bottom-color: black;
   border-bottom-style: solid; }
 
-input[name=answer] {
-  width: 2em; }
+.problem, .nextQuestion, .message {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: bold; }
 
+@media screen and (max-width: 1280px) {
+  .problem hr {
+    border-bottom-width: 10px; }
+
+  .problem {
+    font-size: 4em; }
+
+  .message {
+    font-size: 2em; } }
+@media screen and (max-width: 480px) {
+  .problem hr {
+    border-bottom-width: 5px; }
+
+  .problem {
+    font-size: 3em; }
+
+  .message {
+    font-size: 1.5em; } }
 body, html, #problemContainer {
   height: 100%; }
 
@@ -33,15 +54,16 @@ nav {
   display: table;
   margin: 0 auto; }
 
-.problem {
-  display: table-cell;
-  vertical-align: middle;
-  font-weight: bold; }
-  .problem input {
-    border-bottom-style: dotted; }
+.problem hr {
+  margin: 0; }
+.problem input {
+  border-bottom-style: dotted; }
 
 input[name=answer] {
-  text-align: center; }
+  width: 2em;
+  text-align: center;
+  font-size: 1em;
+  border: none; }
 
 .message .correct, .message .incorrect, .message input {
   font-weight: bold; }

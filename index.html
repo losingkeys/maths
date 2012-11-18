@@ -22,14 +22,16 @@
 	<script id=correct type=text/html>
 		<div class=message>
 			<span class=correct>Correct!</span>
+			<br>
+			<button class=nextQuestion autofocus>Next Question</button>
 		</div>
-		<button class=nextQuestion autofocus>Next Question</button>
 	</script>
 	<script id=incorrect type=text/html>
 		<div class=message>
 			<span class=incorrect>Incorrect</span>, the right answer is: <input name=answer readonly value="<%- correctAnswer %>">
+			<br>
+			<button class=nextQuestion autofocus>Next Question</button>
 		</div>
-		<button class=nextQuestion autofocus>Next Question</button>
 	</script>
 	<script id=problem-template-0 type=text/html>
 		<div class=problem>
