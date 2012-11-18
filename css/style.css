@@ -7,13 +7,22 @@ input[name=answer], .problem hr {
 input[name=answer] {
   width: 2em; }
 
-input[name=answer] {
-  text-align: center; }
+body, html, #problemContainer {
+  height: 100%; }
+
+#problemContainer {
+  display: table;
+  margin: 0 auto; }
 
 .problem {
+  display: table-cell;
+  vertical-align: middle;
   font-weight: bold; }
   .problem input {
     border-bottom-style: dotted; }
+
+input[name=answer] {
+  text-align: center; }
 
 .message .correct, .message .incorrect, .message input {
   font-weight: bold; }

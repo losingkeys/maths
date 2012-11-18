@@ -8,11 +8,16 @@
   @extend %borderbottom
   width: 2em
 
-input[name=answer]
-  @extend %smallinput
-  text-align: center
+body, html, #problemContainer
+  height: 100%
+
+#problemContainer
+  display: table
+  margin: 0 auto
 
 .problem
+  display: table-cell
+  vertical-align: middle
   font-weight: bold
 
   hr
@@ -20,6 +25,10 @@ input[name=answer]
 
   input
     border-bottom-style: dotted
+
+input[name=answer]
+  @extend %smallinput
+  text-align: center
 
 .message
   .correct, .incorrect, input
